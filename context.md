@@ -1,7 +1,7 @@
 # Project Context
 
 > This file is automatically updated by the `/init` command.
-> Last updated: [Run /init to update]
+> Last updated: 2025-12-11T15:22:03-03:00
 
 ---
 
@@ -19,118 +19,122 @@ This file should be regenerated at the start of each session using:
 
 | Property | Value |
 |----------|-------|
-| Name | [Project Name] |
-| Type | [React + TypeScript / Node.js / etc.] |
-| Version | [Version] |
-| Last Init | [Timestamp] |
+| Name | JusAgentic |
+| Type | React + TypeScript + Vite Web Application |
+| Version | 0.0.0 |
+| Last Init | 2025-12-11T15:22:03-03:00 |
+
+## Description
+
+A React + TypeScript web application built with Vite, featuring Tailwind CSS v4 for styling and shadcn/ui component library integration. 
+**Recent Updates**: Integrated a comprehensive Glassmorphism UI design system with mesh gradients, translucent panels, and modern micro-interactions, particularly on the Landing Page.
 
 ## Tech Stack
 
-### Frontend
-- Framework: [e.g., React 18.x]
-- Language: [e.g., TypeScript 5.x]
-- State Management: [e.g., React Query, Zustand]
-- Styling: [e.g., Tailwind CSS, CSS Modules]
-- Testing: [e.g., Jest, React Testing Library]
-
-### Backend (if applicable)
-- Runtime: [e.g., Node.js 20.x]
-- Framework: [e.g., Express, Fastify]
-- Database: [e.g., PostgreSQL, MongoDB]
-- ORM: [e.g., Prisma, TypeORM]
-
-### Infrastructure
-- Hosting: [e.g., Vercel, AWS]
-- CI/CD: [e.g., GitHub Actions]
-- Monitoring: [e.g., Sentry, DataDog]
+| Technology | Version | Purpose |
+|------------|---------|---------|
+| React | 19.2.0 | UI Library |
+| TypeScript | 5.9.3 | Type Safety |
+| Vite | 7.2.4 | Build Tool & Dev Server |
+| Tailwind CSS | 4.1.17 | Utility-First CSS |
+| shadcn/ui | - | Component Library (configured) |
+| ESLint | 9.39.1 | Code Linting |
 
 ## Project Structure
 
 ```
-[Project structure will be generated here]
+jusagentic/
+├── .ai/                        # AI-Assisted Development Framework
+│   ├── agents/                 # Agent prompt templates
+│   │   ├── PLAN.md            # Planning Agent
+│   │   ├── TASKS.md           # Task Decomposition Agent
+│   │   ├── DEV.md             # Development Agent
+│   │   └── REV.md             # Review Agent
+│   ├── adr/                    # Architecture Decision Records
+│   ├── docs/                   # Framework documentation
+│   ├── prd/                    # Product Requirements Documents
+│   ├── tasks/                  # Generated task files
+│   ├── context.md             # This file (project context)
+│   └── README.md              # Framework overview
+│
+├── public/                     # Static assets
+├── src/                        # Source code
+│   ├── assets/                # Application assets
+│   ├── components/            # React components
+│   │   ├── landing/           # Landing page specific components (Glassmorphism)
+│   │   ├── layout/            # Layout components (AppLayout)
+│   │   ├── ui/                # shadcn/ui primitives (Button, etc.)
+│   │   ├── theme-provider.tsx # Theme context provider
+│   │   └── theme-toggle.tsx   # Dark mode toggle
+│   ├── lib/                   # Utility libraries
+│   │   └── utils.ts           # Helper functions
+│   ├── pages/                 # Page components (Routed)
+│   │   ├── auth/              # Authentication pages (Login)
+│   │   ├── cases/             # Case management pages
+│   │   ├── dashboard.tsx      # Dashboard page
+│   │   └── landing.tsx        # Landing page (Glassmorphism)
+│   ├── router.tsx             # React Router configuration
+│   ├── App.tsx                # Main App component (Template)
+│   ├── index.css              # Global CSS (Tailwind + Glassmorphism styles)
+│   └── main.tsx               # Application entry point
+│
+├── components.json            # shadcn/ui configuration
+├── eslint.config.js           # ESLint configuration
+├── index.html                 # HTML entry point
+├── package.json               # Dependencies and scripts
+├── tsconfig.json              # TypeScript configuration
+├── vite.config.ts             # Vite configuration
+└── ...
 ```
 
 ## Key Directories
 
 | Directory | Purpose |
 |-----------|---------|
-| `src/` | Main source code |
-| `src/components/` | React components |
-| `src/hooks/` | Custom React hooks |
-| `src/services/` | API services |
-| `src/utils/` | Utility functions |
-| `src/types/` | TypeScript types |
-| `tests/` | Test files |
-| `public/` | Static assets |
+| `src/components/landing/` | Glassmorphism components for the landing page |
+| `src/components/ui/` | Reusable UI primitives (shadcn/ui) |
+| `.ai/` | AI-Assisted Development Framework metadata |
+
+## Core Agents
+
+| Agent | Role Equivalent | Purpose |
+|-------|-----------------|---------|
+| **PLAN** | Business Analyst | Creates comprehensive PRDs from user stories |
+| **TASKS** | Tech Lead | Decomposes PRDs into prioritized technical tasks |
+| **DEV** | Developer | Implements code, tests, and documentation |
+| **REV** | Reviewer | Reviews implementation for quality and compliance |
 
 ## Active ADRs
 
-| ID | Title | Category |
-|----|-------|----------|
-| [Will be populated by /init] | | |
+| ID | Title | Status | Category |
+|----|-------|--------|----------|
+| ADR-001 | [Template] | Template | - |
 
-## Key Patterns
+> No active ADRs have been created yet. Use `/adr create "[Title]"` to add ADRs.
 
-### Component Pattern
-[Description of how components are structured]
+## Available Scripts
 
-### API Pattern
-[Description of how API calls are made]
+| Script | Command | Description |
+|--------|---------|-------------|
+| Development | `npm run dev` | Start Vite dev server with HMR |
+| Build | `npm run build` | TypeScript check + production build |
+| Lint | `npm run lint` | Run ESLint on codebase |
+| Preview | `npm run preview` | Preview production build |
 
-### State Management Pattern
-[Description of state management approach]
+## Essential Commands
 
-### Error Handling Pattern
-[Description of error handling approach]
+| Command | Description |
+|---------|-------------|
+| `/init` | Updates application context to prevent hallucinations |
+| `/clear` | Clears context between tasks for predictability |
+| `/agents` | Lists, creates, or updates agents |
+| `/status` | Shows current workflow status |
+| `/adr` | Lists or creates Architecture Decision Records |
 
-## Environment Configuration
-
-| Environment | Purpose | URL |
-|-------------|---------|-----|
-| Development | Local dev | localhost:3000 |
-| Staging | Testing | [URL] |
-| Production | Live | [URL] |
-
-## Key Dependencies
-
-### Production
-| Package | Version | Purpose |
-|---------|---------|---------|
-| react | ^18.x | UI framework |
-| typescript | ^5.x | Type safety |
-| [others] | | |
-
-### Development
-| Package | Version | Purpose |
-|---------|---------|---------|
-| jest | ^29.x | Testing |
-| eslint | ^8.x | Linting |
-| [others] | | |
-
-## Current State
-
-### Active Development
-- [Current feature or sprint focus]
-
-### Recent Changes
-- [Recent significant changes]
-
-### Known Issues
-- [Any known issues to be aware of]
-
-## Notes
-
-[Any additional context that agents should know]
-
----
+## Implementation Notes
+- **UI System**: The project uses a custom Glassmorphism design over Shadcn UI. Key utility classes like `.glass` and `.glass-heavy` are defined in `index.css`.
+- **Dark Mode**: The application enforces dark mode by default (`document.documentElement.classList.add('dark')` in `main.tsx`) to support the glass design.
 
 ## Regenerating This File
 
 Run `/init` to regenerate this file with current project state.
-
-The `/init` command will:
-1. Scan the project structure
-2. Read package.json for dependencies
-3. Identify configuration files
-4. Catalog active ADRs
-5. Update this context file
