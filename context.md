@@ -1,7 +1,7 @@
 # Project Context
 
 > This file is automatically updated by the `/init` command.
-> Last updated: 2025-12-12T16:29:33-03:00
+> Last updated: 2025-12-14T19:10:22-03:00
 
 ---
 
@@ -22,7 +22,7 @@ This file should be regenerated at the start of each session using:
 | Name | JusAgentic |
 | Type | React + TypeScript + Vite Web Application with Express Backend |
 | Version | 0.0.0 |
-| Last Init | 2025-12-12T16:29:33-03:00 |
+| Last Init | 2025-12-14T19:10:22-03:00 |
 
 ## Description
 
@@ -78,11 +78,11 @@ jusagentic/
 │   ├── prisma/                 # Database schema & migrations
 │   │   └── schema.prisma
 │   ├── src/
-│   │   ├── controllers/        # Route handlers (4 controllers)
-│   │   ├── services/           # Business logic (5 services)
-│   │   ├── routes/             # API routes (5 route files)
+│   │   ├── controllers/        # Route handlers (6 controllers)
+│   │   ├── services/           # Business logic (7 services)
+│   │   ├── routes/             # API routes (7 route files)
 │   │   ├── middleware/         # Auth & error middleware
-│   │   ├── dtos/               # Data Transfer Objects
+│   │   ├── dtos/               # Data Transfer Objects (8 DTOs)
 │   │   ├── config/             # Configuration
 │   │   ├── lib/                # Utilities (Prisma client)
 │   │   ├── app.ts              # Express app setup
@@ -90,19 +90,23 @@ jusagentic/
 │   └── package.json
 │
 ├── src/                        # Frontend Application
-│   ├── components/             # React components (31 items)
-│   │   ├── landing/           # Landing page (Glassmorphism)
-│   │   ├── layout/            # AppLayout, Navigation
-│   │   ├── kanban/            # Kanban board components
-│   │   ├── agents/            # AI Agent chat UI
-│   │   ├── dashboard/         # Dashboard components
-│   │   └── ui/                # shadcn/ui primitives
-│   ├── pages/                  # Page components (32 items)
-│   │   ├── auth/              # Login, Register
-│   │   ├── cases/             # Case management pages
-│   │   └── dashboard.tsx
+│   ├── business/               # Business logic layer (DTOs & Services)
+│   │   ├── dto/                # Request/Response DTOs (5 items)
+│   │   └── service/            # Frontend API services (4 items)
+│   ├── components/             # React components (38 items)
+│   │   ├── landing/            # Landing page (Glassmorphism, 8 items)
+│   │   ├── layout/             # AppLayout, Navigation (4 items)
+│   │   ├── agents/             # AI Agent chat UI (1 item)
+│   │   ├── auth/               # Authentication forms (2 items)
+│   │   └── ui/                 # shadcn/ui primitives (21 items)
+│   ├── pages/                  # Page components (54 items)
+│   │   ├── auth/               # Login, Register (8 items)
+│   │   ├── cases/              # Case management pages (33 items)
+│   │   ├── agents/             # AI Agent pages (4 items)
+│   │   ├── dashboard/          # Dashboard components (4 items)
+│   │   └── kanban/             # Kanban board (4 items)
 │   ├── contexts/               # React contexts (2 items)
-│   ├── lib/                    # Utilities
+│   ├── lib/                    # Utilities (2 items)
 │   ├── router.tsx              # React Router configuration
 │   ├── App.tsx                 # Main App component
 │   └── index.css               # Global CSS (Tailwind + Glassmorphism)
@@ -141,15 +145,38 @@ jusagentic/
 | Phase 1: Foundation | ✅ Complete | 5/5 | 100% |
 | Phase 2: Core UI | ✅ Complete | 7/7 | 100% |
 | Phase 3: Backend Services | ✅ Complete | 4/4 | 100% |
-| Phase 4: AI Agents | 🔄 In Progress | 5/7 | ~70% |
-| Phase 5: Integration | ⏳ Pending | 0/2 | 0% |
-| Phase 6: Testing & Polish | ⏳ Pending | 0/3 | 0% |
+| Phase 4: AI Agents | ✅ Complete | 7/7 | 100% |
+| Phase 5: Integration | ✅ Complete | 2/2 | 100% |
+| Phase 6: Testing & Polish | 🔄 In Progress | 1/3 | ~33% |
 
 ### Recent Updates
+- Implemented document management with blob URL previews
+- Fixed case detail type error for proper data display
+- Moved document utility functions to `documents.model.ts` for better organization
 - Migrated database from PostgreSQL to SQL Server
 - Implemented AI agent services with Google Gemini integration
 - Built comprehensive case management UI with Kanban boards
 - Established Glassmorphism design system
+- Integrated frontend with backend API services
+
+### Backend Services
+
+| Service | File | Description |
+|---------|------|-------------|
+| Auth | `auth.service.ts` | JWT authentication with bcrypt |
+| Cases | `cases.service.ts` | Case CRUD with pinning support |
+| Tasks | `tasks.service.ts` | Task management for Kanban |
+| Documents | `documents.service.ts` | Document storage and retrieval |
+| Dashboard | `dashboard.service.ts` | Statistics and metrics |
+| Agents | `agents.service.ts` | AI agent orchestration |
+| Gemini | `gemini.service.ts` | Google Gemini API integration |
+
+### Frontend Business Layer
+
+| Component | Directory | Description |
+|-----------|-----------|-------------|
+| DTOs | `src/business/dto/` | 5 Data Transfer Objects |
+| Services | `src/business/service/` | 4 API service clients |
 
 ## Active ADRs
 
@@ -168,6 +195,8 @@ jusagentic/
 | Build | `npm run build` | TypeScript check + production build |
 | Lint | `npm run lint` | Run ESLint on codebase |
 | Test | `npm run test` | Run Playwright E2E tests |
+| Test UI | `npm run test:ui` | Run Playwright with UI |
+| Test Headed | `npm run test:headed` | Run Playwright headed |
 | Dev All | `npm run dev:all` | Run frontend + backend concurrently |
 
 ### Backend (server/)
@@ -178,6 +207,7 @@ jusagentic/
 | Database | `npm run db:generate` | Generate Prisma client |
 | Migrate | `npm run db:push` | Push schema to database |
 | Studio | `npm run db:studio` | Open Prisma Studio |
+| Seed | `npm run db:seed` | Seed database with sample data |
 
 ## Essential Commands
 
@@ -196,6 +226,7 @@ jusagentic/
 - **Database**: SQL Server (migrated from PostgreSQL)
 - **AI Provider**: Google Gemini via LangChain (requires `GOOGLE_AI_API_KEY` in `.env`)
 - **Auth**: JWT-based with bcrypt password hashing
+- **Architecture**: Clean separation with business layer (DTOs + Services) in frontend
 
 ## Environment Configuration
 
