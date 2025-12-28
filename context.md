@@ -1,5 +1,5 @@
 ---
-modified: 2025-12-28T01:06:19.143Z
+modified: 2025-12-28T01:12:48.891Z
 title: Project Context
 ---
 
@@ -75,16 +75,23 @@ A comprehensive legal platform for Brazilian lawyers featuring AI-powered agents
 ## Project Structure
 
 ```
-jusagentic/
+agents/
 ├── .ai/                        # AI-Assisted Development Framework
-│   ├── agents/                 # Agent prompt templates (PLAN, TASKS, DEV, REV)
+│   ├── agents/                 # Agent prompt templates
+│   │   ├── PLAN.md            # Planning Agent (Business Analyst)
+│   │   ├── TASKS.md           # Task Decomposition Agent (Tech Lead)
+│   │   ├── DEV.md             # Development Agent (Specialized Developer)
+│   │   ├── REV.md             # Review Agent (Code Reviewer)
+│   │   └── templates/         # Templates for custom agents
 │   ├── adr/                    # Architecture Decision Records
+│   │   ├── index.md           # ADR registry
+│   │   └── template.md        # ADR template
 │   ├── docs/                   # Framework documentation
 │   ├── prd/                    # Product Requirements Documents
-│   │   └── PRD-001-jusagentic-legal-platform.md
+│   │   └── template.md        # PRD template
 │   ├── tasks/                  # Generated task files
-│   │   └── PRD-001-task-board.md (28 tasks, 6 phases)
-│   └── context.md              # This file
+│   ├── context.md             # This file (project context)
+│   └── README.md              # Framework overview
 │
 ├── server/                     # Backend Application
 │   ├── prisma/                 # Database schema & migrations
@@ -142,7 +149,7 @@ jusagentic/
 | **DEV**   | Developer        | Implements code, tests, and documentation         |
 | **REV**   | Reviewer         | Reviews implementation for quality and compliance |
 
-## AI Agent System (Legal Specialists)
+## Core Agents
 
 | Agent      | Portuguese Name | Purpose                          |
 | ---------- | --------------- | -------------------------------- |
@@ -247,7 +254,7 @@ jusagentic/
 | `/status` | Shows current workflow status                         |
 | `/adr`    | Lists or creates Architecture Decision Records        |
 
-## Implementation Notes
+## Workflow
 
 - **UI System**: Custom Glassmorphism design with `.glass` and `.glass-heavy` utility classes in `index.css`
 - **Dark Mode**: Enforced by default for glass design compatibility
@@ -258,7 +265,7 @@ jusagentic/
 - **Architecture**: Clean separation with business layer (DTOs + Services) in frontend
 - **Caching**: Client-side caching for dashboard stats and agent conversations (1 hour TTL)
 
-## Environment Configuration
+## Current State
 
 Required environment variables in `server/.env`:
 
