@@ -265,6 +265,17 @@ agents/
 - **Architecture**: Clean separation with business layer (DTOs + Services) in frontend
 - **Caching**: Client-side caching for dashboard stats and agent conversations (1 hour TTL)
 
+## Production Infrastructure
+
+| Component   | Technology                  | Purpose                                 |
+| ----------- | --------------------------- | --------------------------------------- |
+| Server      | AWS EC2 (Amazon Linux 2023) | Hosting for all services                |
+| Web Server  | Apache                      | Serves frontend and manages SSL (HTTPS) |
+| Certificate | Let's Encrypt (Certbot)     | SSL certificate for secure connections  |
+| Backend     | Node.js + PM2               | Process manager, runs on port 3001      |
+| Database    | SQLite (dev.db)             | Lightweight local data storage          |
+| AI          | Google Gemini API           | Legal intelligence engine               |
+
 ## Current State
 
 Required environment variables in `server/.env`:
