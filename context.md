@@ -1,12 +1,12 @@
 ---
-modified: 2025-12-28T01:12:48.891Z
+modified: 2026-01-01T16:22:50-03:00
 title: Project Context
 ---
 
 # Project Context
 
 > This file is automatically updated by the `/init` command.
-> Last updated: 2025-12-27T22:04:36-03:00
+> Last updated: 2026-01-01T16:22:50-03:00
 
 ---
 
@@ -27,7 +27,7 @@ This file should be regenerated at the start of each session using:
 | Name      | JusAgentic                                                     |
 | Type      | React + TypeScript + Vite Web Application with Express Backend |
 | Version   | 0.0.0                                                          |
-| Last Init | 2025-12-27T22:04:36-03:00                                      |
+| Last Init | 2026-01-01T16:22:50-03:00                                      |
 
 ## Description
 
@@ -71,11 +71,13 @@ A comprehensive legal platform for Brazilian lawyers featuring AI-powered agents
 | Resend                  | 6.6.0   | Email Service           |
 | Puppeteer               | 24.34.0 | PDF Generation          |
 | Tesseract.js            | 7.0.0   | OCR for Image Documents |
+| AWS SDK S3              | 3.958.0 | Cloud Storage           |
+| Swagger                 | 6.2.8   | API Documentation       |
 
 ## Project Structure
 
 ```
-agents/
+JusAgentic/
 ├── .ai/                        # AI-Assisted Development Framework
 │   ├── agents/                 # Agent prompt templates
 │   │   ├── PLAN.md            # Planning Agent (Business Analyst)
@@ -98,31 +100,33 @@ agents/
 │   │   └── schema.prisma
 │   ├── src/
 │   │   ├── controllers/        # Route handlers (7 controllers)
-│   │   ├── services/           # Business logic (14 services)
+│   │   ├── services/           # Business logic (16 services)
 │   │   ├── routes/             # API routes (8 route files)
 │   │   ├── middleware/         # Auth & error middleware (3 files)
 │   │   ├── dtos/               # Data Transfer Objects (9 DTOs)
-│   │   ├── config/             # Configuration
+│   │   ├── config/             # Configuration (2 files)
 │   │   ├── lib/                # Utilities (Prisma client)
+│   │   ├── scripts/            # Utility scripts (1 file)
+│   │   ├── types/              # Type definitions (1 file)
 │   │   ├── app.ts              # Express app setup
 │   │   └── index.ts            # Entry point
 │   └── package.json
 │
 ├── src/                        # Frontend Application
-│   ├── business/               # Business logic layer (DTOs & Services)
+│   ├── business/               # Business logic layer (18 items)
 │   │   ├── dto/                # Request/Response DTOs
 │   │   └── service/            # Frontend API services
-│   ├── components/             # React components (42 items)
-│   │   ├── landing/            # Landing page (Glassmorphism)
-│   │   ├── layout/             # AppLayout, Navigation
+│   ├── components/             # React components (41 items)
+│   │   ├── landing/            # Landing page (Glassmorphism, 8 items)
+│   │   ├── layout/             # AppLayout, Navigation (4 items)
 │   │   ├── agents/             # AI Agent chat UI
-│   │   ├── auth/               # Authentication forms
+│   │   ├── auth/               # Authentication forms (3 items)
 │   │   ├── seo/                # SEO component
-│   │   └── ui/                 # shadcn/ui primitives
-│   ├── pages/                  # Page components (96 items)
+│   │   └── ui/                 # shadcn/ui primitives (22 items)
+│   ├── pages/                  # Page components (111 items)
 │   │   ├── auth/               # Login, Register, Password Reset (16 items)
 │   │   ├── cases/              # Case management pages (36 items)
-│   │   ├── agents/             # AI Agent pages (19 items)
+│   │   ├── agents/             # AI Agent pages (34 items)
 │   │   ├── dashboard/          # Dashboard components (5 items)
 │   │   ├── kanban/             # Kanban board (4 items)
 │   │   ├── editor/             # Rich text editor (7 items)
@@ -140,7 +144,7 @@ agents/
 └── playwright.config.ts
 ```
 
-## Core Agents
+## Core Agents (AI Framework)
 
 | Agent     | Role Equivalent  | Purpose                                           |
 | --------- | ---------------- | ------------------------------------------------- |
@@ -149,7 +153,7 @@ agents/
 | **DEV**   | Developer        | Implements code, tests, and documentation         |
 | **REV**   | Reviewer         | Reviews implementation for quality and compliance |
 
-## Core Agents
+## Legal Agents (Product)
 
 | Agent      | Portuguese Name | Purpose                          |
 | ---------- | --------------- | -------------------------------- |
@@ -157,7 +161,6 @@ agents/
 | TAREFAS    | Tarefas         | Generates and manages task lists |
 | PESQUISA   | Pesquisa        | Legal research and jurisprudence |
 | REDAÇÃO    | Redação         | Document drafting                |
-| REVISÃO    | Revisão         | Review and quality check         |
 
 ## Development Progress
 
@@ -172,8 +175,9 @@ agents/
 | Phase 5: Integration      | ✅ Complete    | 2/2   | 100%     |
 | Phase 6: Testing & Polish | 🔄 In Progress | 2/3   | ~66%     |
 
-### Recent Updates (December 2025)
+### Recent Updates (December 2025 - January 2026)
 
+- Implemented Swagger API documentation for development environment
 - Implemented password reset flow with email templates (dark mode branding)
 - Added PDF export functionality with `html2pdf.js`
 - Implemented document content extraction using Gemini Vision API
@@ -182,26 +186,31 @@ agents/
 - Centralized priority configuration across components
 - Implemented SEO with react-helmet-async for all pages
 - Added inline case description editing
-- Optimized caching for dashboard and agent conversations
+- Optimized caching for dashboard and agent conversations (1 hour TTL)
 - Removed legacy multi-agent workflow mode
+- Added AWS S3 integration for document storage with signed URLs
+- Improved agent summarization and handoff between agents
+- Refined CI/CD pipeline for master/dev branch deployments
 
 ### Backend Services
 
 | Service             | File                             | Description                                    |
 | ------------------- | -------------------------------- | ---------------------------------------------- |
+| Activity            | `activity.service.ts`            | Activity tracking and logging                  |
+| Agent Conversations | `agent-conversations.service.ts` | Conversation history management                |
+| Agents              | `agents.service.ts`              | AI agent orchestration                         |
 | Auth                | `auth.service.ts`                | JWT authentication with bcrypt, password reset |
 | Cases               | `cases.service.ts`               | Case CRUD with pinning support                 |
-| Tasks               | `tasks.service.ts`               | Task management for Kanban                     |
-| Documents           | `documents.service.ts`           | Document storage and retrieval                 |
-| Document Extraction | `document-extraction.service.ts` | OCR and Gemini Vision for content extraction   |
-| Document Chunking   | `document-chunking.service.ts`   | Text chunking for RAG                          |
 | Dashboard           | `dashboard.service.ts`           | Statistics and metrics                         |
-| Agents              | `agents.service.ts`              | AI agent orchestration                         |
-| Agent Conversations | `agent-conversations.service.ts` | Conversation history management                |
-| Gemini              | `gemini.service.ts`              | Google Gemini API integration                  |
+| Document Chunking   | `document-chunking.service.ts`   | Text chunking for RAG                          |
+| Document Extraction | `document-extraction.service.ts` | OCR and Gemini Vision for content extraction   |
+| Documents           | `documents.service.ts`           | Document storage and retrieval                 |
 | Email               | `email.service.ts`               | Transactional emails via Resend                |
-| PDF                 | `pdf.service.ts`                 | PDF generation with Puppeteer                  |
 | Embedding           | `embedding.service.ts`           | Vector embeddings for search                   |
+| Gemini              | `gemini.service.ts`              | Google Gemini API integration                  |
+| PDF                 | `pdf.service.ts`                 | PDF generation with Puppeteer                  |
+| S3                  | `s3.service.ts`                  | AWS S3 storage integration                     |
+| Tasks               | `tasks.service.ts`               | Task management for Kanban                     |
 | Vector Search       | `vector-search.service.ts`       | Semantic document search                       |
 
 ### Frontend Business Layer
@@ -239,6 +248,7 @@ agents/
 | ----------- | --------------------- | ------------------------------ |
 | Development | `npm run dev`         | Start Express with tsx watch   |
 | Build       | `npm run build`       | Compile TypeScript             |
+| Start       | `npm run start`       | Run production server          |
 | Database    | `npm run db:generate` | Generate Prisma client         |
 | Migrate     | `npm run db:push`     | Push schema to database        |
 | Studio      | `npm run db:studio`   | Open Prisma Studio             |
@@ -264,6 +274,7 @@ agents/
 - **Auth**: JWT-based with bcrypt password hashing, password reset via email
 - **Architecture**: Clean separation with business layer (DTOs + Services) in frontend
 - **Caching**: Client-side caching for dashboard stats and agent conversations (1 hour TTL)
+- **Storage**: AWS S3 for document storage with presigned URLs
 
 ## Production Infrastructure
 
@@ -273,7 +284,8 @@ agents/
 | Web Server  | Apache                      | Serves frontend and manages SSL (HTTPS) |
 | Certificate | Let's Encrypt (Certbot)     | SSL certificate for secure connections  |
 | Backend     | Node.js + PM2               | Process manager, runs on port 3001      |
-| Database    | SQLite (dev.db)             | Lightweight local data storage          |
+| Database    | Amazon RDS (SQL Server)     | Remote data storage                     |
+| Storage     | AWS S3                      | Document and file storage               |
 | AI          | Google Gemini API           | Legal intelligence engine               |
 
 ## Current State
@@ -284,7 +296,12 @@ Required environment variables in `server/.env`:
 - `JWT_SECRET` - Secret for JWT signing
 - `GOOGLE_AI_API_KEY` - Google Gemini API key
 - `RESEND_API_KEY` - Resend API key for emails
+- `EMAIL_FROM` - Email sender address
 - `APP_URL` - Frontend application URL
+- `AWS_ACCESS_KEY_ID` - AWS access key for S3
+- `AWS_SECRET_ACCESS_KEY` - AWS secret key for S3
+- `AWS_REGION` - AWS region for S3
+- `AWS_S3_BUCKET` - S3 bucket name for documents
 
 ## Regenerating This File
 
